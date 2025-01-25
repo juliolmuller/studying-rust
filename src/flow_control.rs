@@ -3,6 +3,7 @@ use rand::Rng;
 pub fn show() {
     if_condition();
     match_expression();
+    lopping_with_loop();
 }
 
 fn if_condition() {
@@ -64,6 +65,31 @@ fn match_expression() {
     println!("MATCH EXPRESSION:");
     println!("  Dice stopped at {}, scoring {} points", dice_roll, points);
     println!("  {:?} is worth {} cents", coin, value);
+    println!();
+}
+
+fn lopping_with_loop() {
+    // 🚨 note that, in Rust, LOOP is an expression, not a statement
+    println!("LOOP:");
+
+    let mut num1: u16 = 0;
+    let mut num2: u16 = 1;
+    print!("  Fibonacci: ");
+    let msg = loop {
+        print!("{}", num1);
+
+        let next = num1 + num2;
+        num1 = num2;
+        num2 = next;
+
+        if num2 > 100 {
+            break "🚀"
+        } else {
+            print!(", ");
+        }
+    };
+
+    println!("... {msg}");
     println!();
 }
 
