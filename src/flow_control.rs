@@ -2,6 +2,7 @@ use rand::Rng;
 
 pub fn show() {
     if_condition();
+    match_expression();
 }
 
 fn if_condition() {
@@ -32,6 +33,40 @@ fn if_condition() {
     println!();
 }
 
+fn match_expression() {
+    let dice_roll: u8 = random_dice_roll();
+    let points: u8 = match dice_roll {
+        1 => 100,
+        5 => 200,
+        _ => 0,
+    };
+
+    #[allow(dead_code)]
+    #[derive(Debug)]
+    enum Coin {
+        Penny,
+        Nickel,
+        Dime,
+        Quarter(&'static str),
+    }
+
+    let coin = Coin::Nickel;
+    let value = match coin {
+        Coin::Penny => 1,
+        Coin::Nickel => 5,
+        Coin::Dime => 10,
+        Coin::Quarter(state) => {
+            println!("State quarter from {:?}!", state);
+            25
+        }
+    };
+
+    println!("MATCH EXPRESSION:");
+    println!("  Dice stopped at {}, scoring {} points", dice_roll, points);
+    println!("  {:?} is worth {} cents", coin, value);
+    println!();
+}
+
 fn random_animal() -> &'static str {
     let animals = ["dog", "cat", "duck", "chinchilla", "giraffe"];
     let mut rng = rand::thread_rng();
@@ -45,4 +80,11 @@ fn random_age() -> u8 {
     let age = rng.gen_range(1..=100);
 
     age
+}
+
+fn random_dice_roll() -> u8 {
+    let mut rng = rand::thread_rng();
+    let dice_roll = rng.gen_range(1..=6);
+
+    dice_roll
 }
