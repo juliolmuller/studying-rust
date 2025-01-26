@@ -5,6 +5,7 @@ pub fn show() {
     match_expression();
     lopping_with_loop();
     lopping_with_labeled_loop();
+    lopping_with_while();
 }
 
 fn if_condition() {
@@ -134,6 +135,30 @@ fn lopping_with_labeled_loop() {
         i += 1;
     };
 
+    println!();
+}
+
+fn lopping_with_while() {
+    // TODO: implementation
+    println!("WHILE LOOP:");
+
+    const CEILING: u8 = 20;
+    print!("  Odd numbers between 0 and {}: ", CEILING);
+
+    let mut i = 0;
+    while i <= CEILING {
+        if i % 2 != 0 {
+            if i != 0 {
+                print!(", ");
+            }
+
+            print!("{}", i);
+        }
+
+        i += 1;
+    }
+
+    println!();
     println!();
 }
 
