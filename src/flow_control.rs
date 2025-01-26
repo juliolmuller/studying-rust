@@ -6,6 +6,7 @@ pub fn show() {
     lopping_with_loop();
     lopping_with_labeled_loop();
     lopping_with_while();
+    lopping_with_for();
 }
 
 fn if_condition() {
@@ -139,7 +140,6 @@ fn lopping_with_labeled_loop() {
 }
 
 fn lopping_with_while() {
-    // TODO: implementation
     println!("WHILE LOOP:");
 
     const CEILING: u8 = 20;
@@ -159,6 +159,17 @@ fn lopping_with_while() {
     }
 
     println!();
+    println!();
+}
+
+fn lopping_with_for() {
+    println!("FOR LOOP:");
+
+    let foods_list = &["apples", "cake", "coffee"];
+    for food in foods_list {
+        println!("  I like {}.", food);
+    }
+
     println!();
 }
 
